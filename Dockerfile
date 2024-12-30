@@ -7,7 +7,7 @@ WORKDIR /user/src/path
 
 COPY package*.json ./
 
-RUN npm cli
+RUN npm ci
 
 COPY . .
 
