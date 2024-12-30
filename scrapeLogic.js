@@ -19,18 +19,19 @@ const scrapeLogic = async (res) => {
 
     await page.goto("https://developer.chrome.com/");
     await page.setViewport({ width: 1080, height: 1024 });
-    await page
-      .locator(".devsite-search-field")
-      .fill("automate beyond recorder");
-    await page.locator(".devsite-result-item-link").click();
+    // await page
+    //   .locator(".devsite-search-field")
+    //   .fill("automate beyond recorder");
+    // await page.locator(".devsite-result-item-link").click();
 
-    const textSelector = await page
-      .locator("text/Customize and automate")
-      .waitHandle();
-    const fullTitle = await textSelector?.evaluate((el) => el.textContent);
+    // const textSelector = await page
+    //   .locator("text/Customize and automate")
+    //   .waitHandle();
+    res.send(await page.title());
+    // const fullTitle = await textSelector?.evaluate((el) => el.textContent);
 
-    console.log('The title of this blog post is "%s".', fullTitle);
-    res.send(fullTitle);
+    // console.log('The title of this blog post is "%s".', fullTitle);
+    // res.send(fullTitle);
   } catch (error) {
     console.log("Error while scraping:", error);
     res.send(
